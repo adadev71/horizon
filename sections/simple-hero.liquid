@@ -1,7 +1,11 @@
+<link href="{{ 'simple-hero.css' | asset_url }}" rel="stylesheet" type="text/css" media="all" />
+
 <div class="section-background color-{{ section.settings.color_scheme }}"></div>
-<section class="section section-hero-simple" style="{% render 'spacing-style', settings: section.settings %}">
+<section class="section section-hero-simple" 
+style="{% render 'spacing-style', settings: section.settings %}">
   <div class="hero-simple__inner">
-    <div class="hero-simple__content" style="text-align: {{ section.settings.content_alignment }};">
+    <div class="hero-simple__content" 
+    style="text-align: {{ section.settings.content_alignment }};">
       {% if section.settings.overline != blank %}
         <p class="hero-simple__eyebrow">{{ section.settings.overline }}</p>
       {% endif %}
@@ -32,76 +36,7 @@
   </div>
 </section>
 
-{% stylesheet %}
-  .hero-simple__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 3rem;
-    align-items: center;
-  }
 
-  .hero-simple__content {
-    max-width: 720px;
-  }
-
-  .hero-simple__eyebrow {
-    margin: 0 0 1rem;
-    text-transform: uppercase;
-    letter-spacing: .2em;
-    font-size: .875rem;
-    font-weight: 700;
-    color: var(--color-foreground-muted);
-  }
-
-  .hero-simple__heading {
-    margin: 0 0 1.25rem;
-    line-height: 1.05;
-    letter-spacing: -.03em;
-    font-size: clamp(2.5rem, 4vw, 4.5rem);
-  }
-
-  .hero-simple__text {
-    margin: 0 1.75rem 2rem 0;
-    max-width: 42rem;
-    font-size: 1.05rem;
-    line-height: 1.75;
-  }
-
-  .hero-simple__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-simple__media {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-simple__image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 1rem;
-    object-fit: cover;
-  }
-
-  @media (max-width: 749px) {
-    .hero-simple__inner {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .hero-simple__content {
-      text-align: center;
-    }
-
-    .hero-simple__button {
-      width: auto;
-    }
-  }
-{% endstylesheet %}
 
 {% schema %}
 {
