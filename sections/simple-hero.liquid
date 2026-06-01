@@ -1,0 +1,198 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<section class="section section-hero-simple" style="{% render 'spacing-style', settings: section.settings %}">
+  <div class="hero-simple__inner">
+    <div class="hero-simple__content" style="text-align: {{ section.settings.content_alignment }};">
+      {% if section.settings.overline != blank %}
+        <p class="hero-simple__eyebrow">{{ section.settings.overline }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="hero-simple__heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="hero-simple__text rte">{{ section.settings.text }}</div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="button button--primary hero-simple__button"
+        >
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.image != blank %}
+      <div class="hero-simple__media">
+        {{ section.settings.image | image_url: width: 1600 | image_tag: alt: section.settings.image.alt | default: section.settings.heading, class: 'hero-simple__image' }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% stylesheet %}
+  .hero-simple__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-simple__content {
+    max-width: 720px;
+  }
+
+  .hero-simple__eyebrow {
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: .875rem;
+    font-weight: 700;
+    color: var(--color-foreground-muted);
+  }
+
+  .hero-simple__heading {
+    margin: 0 0 1.25rem;
+    line-height: 1.05;
+    letter-spacing: -.03em;
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+  }
+
+  .hero-simple__text {
+    margin: 0 1.75rem 2rem 0;
+    max-width: 42rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .hero-simple__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-simple__media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-simple__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+
+  @media (max-width: 749px) {
+    .hero-simple__inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero-simple__content {
+      text-align: center;
+    }
+
+    .hero-simple__button {
+      width: auto;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Simple hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "overline",
+      "label": "Eyebrow text",
+      "default": "New arrival"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A simple hero section"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Subheading text",
+      "default": "Use this section to highlight a new collection, product launch, or announcement with a clean hero layout."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link",
+      "default": "#"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple hero",
+      "category": "Hero"
+    }
+  ]
+}
