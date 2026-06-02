@@ -283,10 +283,26 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "simple_hero_6iRWRz": {
+      "type": "simple-hero",
+      "name": "Simple hero",
+      "settings": {
+        "overline": "New arrival",
+        "heading": "A simple hero section",
+        "text": "Use this section to highlight a new collection, product launch, or announcement with a clean hero layout.",
+        "button_label": "Shop now",
+        "button_link": "",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "padding-block-start": 60,
+        "padding-block-end": 60
+      }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "simple_hero_6iRWRz"
   ]
 }
